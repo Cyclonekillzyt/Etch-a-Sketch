@@ -14,16 +14,15 @@ body {
 
 .container {
   display: flex;
-  width: 786px;
+  width: 800px;
   height: 800px;
   background-color: #e4e4e4;
   border: 1px solid;
   flex-wrap: wrap;
 }
 
-.etchASketch {
-    border: 1px solid;
-    width: 49px;
-    height: 49px;
-}
 
+
+.etchASketch:hover{
+    background-color: black;
+}
