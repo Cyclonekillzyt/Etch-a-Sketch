@@ -1,23 +1,29 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 800px;
-    height: 800px;
-    background-color: #c7c7c7;
-    border: 2px solid;
+.container {
+  display: flex;
+  width: 786px;
+  height: 800px;
+  background-color: #e4e4e4;
+  border: 1px solid;
+  flex-wrap: wrap;
 }
+
+.etchASketch {
+    border: 1px solid;
+    width: 49px;
+    height: 49px;
+}
+
