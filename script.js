@@ -27,17 +27,39 @@ function changeGridSize(size) {
   const Container = document.querySelector(".container");
   Container.innerHTML = "";
 
+  // Create the grid items
   for (let i = 0; i < size * size; i++) {
     const div = document.createElement("div");
     div.classList.add("grid-item");
     Container.appendChild(div);
   }
+
+  // Re-query grid items after they are created
   const gridItems = document.querySelectorAll(".grid-item");
+
+  // Add event listeners to each grid item
   gridItems.forEach(item => {
     item.addEventListener("mouseover", () => {
-      item.style.backgroundColor = "black";
+      item.style.backgroundColor = "black"; // Default color (black)
     });
   });
 }
 
+randomColorBtn.addEventListener("click", () => {
+  const gridItems = document.querySelectorAll(".grid-item");
+  gridItems.forEach((item) => {
+    item.addEventListener("mouseover", () => {
+      item.style.backgroundColor = getRandomColor();
+    });
+  });
+});
 
+function getRandomColor() {
+  const r = Math.floor( Math.random() * 255);
+  const g = Math.floor( Math.random() * 255);
+  const b = Math.floor( Math.random() * 255);
+  const a = Math.random() * 1.5;
+  const rounded = a.toFixed(1);
+  let color = "rgba(" + r + "," + g + "," + b + "," + rounded + ")";
+  return color;
+}
