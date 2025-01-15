@@ -3,41 +3,41 @@ const resizeButton = document.getElementById("resize");
 const randomColorBtn = document.getElementById("randomColor");
 const blackColorBtn = document.getElementById("blackColor");
 const resetBtn = document.getElementById("reset");
-const containerWidth = container.offsetWidth;
 const etchASketchArray = [];
-let gridSize = 36;
+let gridSize = 16;
 
-document.onload = createGrid(gridSize);
+window.onload = () => changeGridSize(gridSize);
 
 resizeButton.addEventListener("click", () => {
   container.innerHTML = "";
   etchASketchArray.length = 0;
-  gridSize = parseInt(prompt("Enter the size of the grid"));
-  if (gridSize > 1 && gridSize < 100) {
-    createGrid(gridSize);
+  gridSize = parseInt(prompt("Enter the size of the grid (1-100)"));
+  if (gridSize > 1 && gridSize <= 100) {
+    changeGridSize(gridSize);
   } else {
     alert("Please enter a number between 1 and 100");
     gridSize = 16;
-    createGrid(gridSize);
+    changeGridSize(gridSize);
   }
 });
 
-function createGrid(size) {
-  let totalSize = size * size;
-  for (let i = 0; i <= totalSize; i++) {
-    const etchASketch = document.createElement("div");
-    etchASketch.style.display = "flex";
-    etchASketch.style.flex = `0 0 ${squareSize}px`;
-    etchASketch.style.border = `1px solid`;
-    etchASketch.style.boxSizing = "border-box";
-    container.style.overflow = "hidden";
+function changeGridSize(size) {
+  document.documentElement.style.setProperty("--grid-size", size);
 
-    container.appendChild(etchASketch);
-    etchASketchArray.push(etchASketch);
+  const Container = document.querySelector(".container");
+  Container.innerHTML = "";
+
+  for (let i = 0; i < size * size; i++) {
+    const div = document.createElement("div");
+    div.classList.add("grid-item");
+    Container.appendChild(div);
   }
-  etchASketchArray.forEach((etchASketch) => {
-    etchASketch.addEventListener("mouseover", () => {
-      etchASketch.style.backgroundColor = "black";
+  const gridItems = document.querySelectorAll(".grid-item");
+  gridItems.forEach(item => {
+    item.addEventListener("mouseover", () => {
+      item.style.backgroundColor = "black";
     });
   });
 }
+
+
