@@ -58,8 +58,26 @@ function getRandomColor() {
   const r = Math.floor( Math.random() * 255);
   const g = Math.floor( Math.random() * 255);
   const b = Math.floor( Math.random() * 255);
-  const a = Math.random() * 1.5;
+  const a = Math.random() * 1.05;
   const rounded = a.toFixed(1);
   let color = "rgba(" + r + "," + g + "," + b + "," + rounded + ")";
   return color;
 }
+
+blackColorBtn.addEventListener("click", () => {
+  const gridItems = document.querySelectorAll(".grid-item");
+  gridItems.forEach((item) => {
+    item.addEventListener("mouseover", () => {
+      item.style.backgroundColor = "black";
+    });
+  });
+});
+
+resetBtn.addEventListener("click", () => {
+  const gridItems = document.querySelectorAll(".grid-item");
+  gridItems.forEach((item) => {
+    item.addEventListener("mouseover", () => {
+      item.style.backgroundColor = "transparent";
+    });
+  });
+})
