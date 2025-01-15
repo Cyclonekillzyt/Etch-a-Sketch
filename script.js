@@ -1,13 +1,19 @@
+// get elements from html
 const container = document.getElementById("container");
 const resizeButton = document.getElementById("resize");
 const randomColorBtn = document.getElementById("randomColor");
 const blackColorBtn = document.getElementById("blackColor");
 const resetBtn = document.getElementById("reset");
+
+// create array to store the items created
 const etchASketchArray = [];
+
+//default starting grid size
 let gridSize = 16;
 
 window.onload = () => changeGridSize(gridSize);
 
+// eventlistener for resize button
 resizeButton.addEventListener("click", () => {
   container.innerHTML = "";
   etchASketchArray.length = 0;
@@ -21,30 +27,29 @@ resizeButton.addEventListener("click", () => {
   }
 });
 
+// function to change the grid size
 function changeGridSize(size) {
   document.documentElement.style.setProperty("--grid-size", size);
 
   const Container = document.querySelector(".container");
   Container.innerHTML = "";
 
-  // Create the grid items
   for (let i = 0; i < size * size; i++) {
     const div = document.createElement("div");
     div.classList.add("grid-item");
     Container.appendChild(div);
   }
 
-  // Re-query grid items after they are created
   const gridItems = document.querySelectorAll(".grid-item");
 
-  // Add event listeners to each grid item
   gridItems.forEach(item => {
     item.addEventListener("mouseover", () => {
-      item.style.backgroundColor = "black"; // Default color (black)
+      item.style.backgroundColor = "black";
     });
   });
 }
 
+// eventlistener for random color button
 randomColorBtn.addEventListener("click", () => {
   const gridItems = document.querySelectorAll(".grid-item");
   gridItems.forEach((item) => {
@@ -54,6 +59,8 @@ randomColorBtn.addEventListener("click", () => {
   });
 });
 
+
+//function to generate random color
 function getRandomColor() {
   const r = Math.floor( Math.random() * 255);
   const g = Math.floor( Math.random() * 255);
@@ -64,6 +71,7 @@ function getRandomColor() {
   return color;
 }
 
+//eventlistener for changing color back to black
 blackColorBtn.addEventListener("click", () => {
   const gridItems = document.querySelectorAll(".grid-item");
   gridItems.forEach((item) => {
@@ -73,6 +81,7 @@ blackColorBtn.addEventListener("click", () => {
   });
 });
 
+//eventlistener for reset button
 resetBtn.addEventListener("click", () => {
   const gridItems = document.querySelectorAll(".grid-item");
   gridItems.forEach((item) => {
