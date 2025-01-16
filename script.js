@@ -3,6 +3,7 @@ const container = document.getElementById("container");
 const resizeButton = document.getElementById("resize");
 const randomColorBtn = document.getElementById("randomColor");
 const blackColorBtn = document.getElementById("blackColor");
+const EraserBtn = document.getElementById("Eraser");
 const resetBtn = document.getElementById("reset");
 
 // create array to store the items created
@@ -81,12 +82,20 @@ blackColorBtn.addEventListener("click", () => {
   });
 });
 
-//eventlistener for reset button
-resetBtn.addEventListener("click", () => {
+//eventlistener for Eraser button
+EraserBtn.addEventListener("click", () => {
   const gridItems = document.querySelectorAll(".grid-item");
   gridItems.forEach((item) => {
     item.addEventListener("mouseover", () => {
       item.style.backgroundColor = "transparent";
     });
+  });
+})
+
+//eventlistener for reset button
+resetBtn.addEventListener("click", () => {
+  const gridItems = document.querySelectorAll(".grid-item");
+  gridItems.forEach((item) => {
+      item.style.backgroundColor = "transparent";
   });
 })
